@@ -44,13 +44,16 @@
             this.textBoxCurrentYear = new System.Windows.Forms.TextBox();
             this.labelError = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
+            this.checkedListBox = new System.Windows.Forms.CheckedListBox();
+            this.LblCheckboxOutput = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(92, 10);
+            this.label1.Location = new System.Drawing.Point(165, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(198, 30);
             this.label1.TabIndex = 0;
@@ -59,7 +62,7 @@
             // BirthDateCalender
             // 
             this.BirthDateCalender.CustomFormat = "dd/mm/yyyy";
-            this.BirthDateCalender.Location = new System.Drawing.Point(324, 81);
+            this.BirthDateCalender.Location = new System.Drawing.Point(328, 79);
             this.BirthDateCalender.Name = "BirthDateCalender";
             this.BirthDateCalender.Size = new System.Drawing.Size(18, 23);
             this.BirthDateCalender.TabIndex = 3;
@@ -67,7 +70,7 @@
             // 
             // ToDateCalender
             // 
-            this.ToDateCalender.Location = new System.Drawing.Point(324, 124);
+            this.ToDateCalender.Location = new System.Drawing.Point(328, 122);
             this.ToDateCalender.Name = "ToDateCalender";
             this.ToDateCalender.Size = new System.Drawing.Size(18, 23);
             this.ToDateCalender.TabIndex = 7;
@@ -77,7 +80,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(27, 82);
+            this.label2.Location = new System.Drawing.Point(31, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 21);
             this.label2.TabIndex = 3;
@@ -87,7 +90,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(62, 122);
+            this.label3.Location = new System.Drawing.Point(66, 120);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 21);
             this.label3.TabIndex = 3;
@@ -100,7 +103,7 @@
             this.btnCalculate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCalculate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCalculate.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCalculate.Location = new System.Drawing.Point(252, 169);
+            this.btnCalculate.Location = new System.Drawing.Point(256, 167);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(90, 26);
             this.btnCalculate.TabIndex = 8;
@@ -113,7 +116,7 @@
             this.Result.AutoSize = true;
             this.Result.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Result.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Result.Location = new System.Drawing.Point(16, 229);
+            this.Result.Location = new System.Drawing.Point(14, 214);
             this.Result.Margin = new System.Windows.Forms.Padding(0);
             this.Result.Name = "Result";
             this.Result.Padding = new System.Windows.Forms.Padding(5, 10, 5, 10);
@@ -162,7 +165,7 @@
             "29",
             "30",
             "31"});
-            this.comboBoxBirthDay.Location = new System.Drawing.Point(148, 81);
+            this.comboBoxBirthDay.Location = new System.Drawing.Point(152, 79);
             this.comboBoxBirthDay.Name = "comboBoxBirthDay";
             this.comboBoxBirthDay.Size = new System.Drawing.Size(38, 23);
             this.comboBoxBirthDay.TabIndex = 0;
@@ -189,7 +192,7 @@
             "October",
             "November",
             "December"});
-            this.comboBoxBirthMonth.Location = new System.Drawing.Point(187, 81);
+            this.comboBoxBirthMonth.Location = new System.Drawing.Point(191, 79);
             this.comboBoxBirthMonth.Name = "comboBoxBirthMonth";
             this.comboBoxBirthMonth.Size = new System.Drawing.Size(80, 23);
             this.comboBoxBirthMonth.TabIndex = 1;
@@ -199,7 +202,7 @@
             // 
             this.textBoxBirthYear.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxBirthYear.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBoxBirthYear.Location = new System.Drawing.Point(273, 81);
+            this.textBoxBirthYear.Location = new System.Drawing.Point(277, 79);
             this.textBoxBirthYear.MaxLength = 4;
             this.textBoxBirthYear.Name = "textBoxBirthYear";
             this.textBoxBirthYear.Size = new System.Drawing.Size(45, 23);
@@ -248,7 +251,7 @@
             "29",
             "30",
             "31"});
-            this.comboBoxCurrentDay.Location = new System.Drawing.Point(148, 124);
+            this.comboBoxCurrentDay.Location = new System.Drawing.Point(152, 122);
             this.comboBoxCurrentDay.MaxDropDownItems = 5;
             this.comboBoxCurrentDay.Name = "comboBoxCurrentDay";
             this.comboBoxCurrentDay.Size = new System.Drawing.Size(38, 23);
@@ -276,7 +279,7 @@
             "October",
             "November",
             "December"});
-            this.comboBoxCurrentMonth.Location = new System.Drawing.Point(187, 124);
+            this.comboBoxCurrentMonth.Location = new System.Drawing.Point(191, 122);
             this.comboBoxCurrentMonth.Name = "comboBoxCurrentMonth";
             this.comboBoxCurrentMonth.Size = new System.Drawing.Size(80, 23);
             this.comboBoxCurrentMonth.TabIndex = 5;
@@ -286,7 +289,7 @@
             // 
             this.textBoxCurrentYear.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxCurrentYear.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBoxCurrentYear.Location = new System.Drawing.Point(273, 124);
+            this.textBoxCurrentYear.Location = new System.Drawing.Point(277, 122);
             this.textBoxCurrentYear.MaxLength = 4;
             this.textBoxCurrentYear.Name = "textBoxCurrentYear";
             this.textBoxCurrentYear.Size = new System.Drawing.Size(45, 23);
@@ -300,7 +303,7 @@
             this.labelError.BackColor = System.Drawing.Color.Firebrick;
             this.labelError.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelError.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.labelError.Location = new System.Drawing.Point(16, 229);
+            this.labelError.Location = new System.Drawing.Point(14, 214);
             this.labelError.Margin = new System.Windows.Forms.Padding(0);
             this.labelError.Name = "labelError";
             this.labelError.Padding = new System.Windows.Forms.Padding(5, 10, 5, 10);
@@ -311,20 +314,57 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(187, 172);
+            this.btnReset.Location = new System.Drawing.Point(152, 167);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(59, 23);
+            this.btnReset.Size = new System.Drawing.Size(98, 26);
             this.btnReset.TabIndex = 9;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // checkedListBox
+            // 
+            this.checkedListBox.CheckOnClick = true;
+            this.checkedListBox.FormattingEnabled = true;
+            this.checkedListBox.Items.AddRange(new object[] {
+            "Months",
+            "Weeks",
+            "Days",
+            "Hours",
+            "Minutes",
+            "Seconds"});
+            this.checkedListBox.Location = new System.Drawing.Point(393, 91);
+            this.checkedListBox.MultiColumn = true;
+            this.checkedListBox.Name = "checkedListBox";
+            this.checkedListBox.Size = new System.Drawing.Size(74, 112);
+            this.checkedListBox.TabIndex = 10;
+            // 
+            // LblCheckboxOutput
+            // 
+            this.LblCheckboxOutput.AutoSize = true;
+            this.LblCheckboxOutput.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.LblCheckboxOutput.Location = new System.Drawing.Point(14, 266);
+            this.LblCheckboxOutput.Name = "LblCheckboxOutput";
+            this.LblCheckboxOutput.Size = new System.Drawing.Size(0, 15);
+            this.LblCheckboxOutput.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(382, 48);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 15);
+            this.label4.TabIndex = 12;
             // 
             // AgeCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(380, 284);
+            this.ClientSize = new System.Drawing.Size(487, 259);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.LblCheckboxOutput);
+            this.Controls.Add(this.checkedListBox);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.textBoxCurrentYear);
             this.Controls.Add(this.textBoxBirthYear);
@@ -371,5 +411,8 @@
         private TextBox textBoxCurrentYear;
         private Label labelError;
         private Button btnReset;
+        private CheckedListBox checkedListBox;
+        private Label LblCheckboxOutput;
+        private Label label4;
     }
 }
