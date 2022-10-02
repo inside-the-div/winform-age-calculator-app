@@ -224,7 +224,7 @@ namespace AgeCalculator
                     CurrentYear = CurrentYear - 1;
                     CurrentMonth = CurrentMonth + 12;
                 }
-                int CalculatedDay = (CurrentDay - BirthDateDay) + 1;
+                int CalculatedDay = (CurrentDay - BirthDateDay);
                 int CalculatedMonth = CurrentMonth - BirthMonth;
                 int CalculatedYear = CurrentYear - BirthYear;
                 int TotalDays = (((CalculatedYear * 12) + CalculatedMonth) * 30) + CalculatedDay;
