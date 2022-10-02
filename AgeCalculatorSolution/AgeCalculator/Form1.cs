@@ -96,7 +96,7 @@ namespace AgeCalculator
 
         private void AgeCalculator_Load(object sender, EventArgs e)
         {
-            label4.Text = "Select here for\n more OUTPUT";
+            lblmoreoutput.Text = "More Output";
             LblCheckboxOutput.Hide();
             Result.Hide();
             labelError.Hide();
@@ -249,32 +249,32 @@ namespace AgeCalculator
                         }
                     }
                 }
-                string checkboxOutput = "";
+                string moreOutputResult = "";
                 for (int i = 0; i< checkedListBox.CheckedItems.Count; i++)
                 {
                     if (checkedListBox.CheckedItems[i] == "Months")
                     {
-                        checkboxOutput += "Total "+ TotalMonths + " MOnths and "+CalculatedDay+ " Days.\n";
+                        moreOutputResult += "Total "+ TotalMonths + " Months and "+CalculatedDay+ " Days.\n";
                     }
                     else if (checkedListBox.CheckedItems[i] == "Weeks")
                     {
-                        checkboxOutput += "Total " + TotalWeeks + " Weeks and " + WeekDays + " Days.\n";
+                        moreOutputResult += "Total " + TotalWeeks + " Weeks and " + WeekDays + " Days.\n";
                     }
                     else if (checkedListBox.CheckedItems[i] == "Days")
                     {
-                        checkboxOutput += "Total " + TotalDays + " Days.\n";
+                        moreOutputResult += "Total " + TotalDays + " Days.\n";
                     }
                     else if (checkedListBox.CheckedItems[i] == "Hours")
                     {
-                        checkboxOutput += "Total " + TotalHour + " Hours.\n";
+                        moreOutputResult += "Total " + TotalHour + " Hours.\n";
                     }
                     else if (checkedListBox.CheckedItems[i] == "Minutes")
                     {
-                        checkboxOutput += "Total " + TotalMinute + " Minutes.\n";
+                        moreOutputResult += "Total " + TotalMinute + " Minutes.\n";
                     }
                     else if (checkedListBox.CheckedItems[i] == "Seconds")
                     {
-                        checkboxOutput += "Total " + TotalSecond + " Seconds.\n";
+                        moreOutputResult += "Total " + TotalSecond + " Seconds.\n";
                     }
                 }
                 Result.Hide();
@@ -282,8 +282,8 @@ namespace AgeCalculator
                 LblCheckboxOutput.Hide();
                 Result.Text = "Your Age is " + CalculatedYear + " years, " + CalculatedMonth + " months and " + CalculatedDay + " days";
                 Result.Show();
-                LblCheckboxOutput.Text = checkboxOutput;
-                if(checkboxOutput != "")
+                LblCheckboxOutput.Text = moreOutputResult;
+                if(moreOutputResult != "")
                 {
                     LblCheckboxOutput.Show();
                 }                

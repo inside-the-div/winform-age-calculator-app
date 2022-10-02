@@ -46,7 +46,7 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.checkedListBox = new System.Windows.Forms.CheckedListBox();
             this.LblCheckboxOutput = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblmoreoutput = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -333,10 +333,10 @@
             "Hours",
             "Minutes",
             "Seconds"});
-            this.checkedListBox.Location = new System.Drawing.Point(393, 91);
+            this.checkedListBox.Location = new System.Drawing.Point(366, 79);
             this.checkedListBox.MultiColumn = true;
             this.checkedListBox.Name = "checkedListBox";
-            this.checkedListBox.Size = new System.Drawing.Size(74, 112);
+            this.checkedListBox.Size = new System.Drawing.Size(108, 112);
             this.checkedListBox.TabIndex = 10;
             // 
             // LblCheckboxOutput
@@ -348,13 +348,13 @@
             this.LblCheckboxOutput.Size = new System.Drawing.Size(0, 15);
             this.LblCheckboxOutput.TabIndex = 11;
             // 
-            // label4
+            // lblmoreoutput
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(382, 48);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 15);
-            this.label4.TabIndex = 12;
+            this.lblmoreoutput.AutoSize = true;
+            this.lblmoreoutput.Location = new System.Drawing.Point(366, 61);
+            this.lblmoreoutput.Name = "lblmoreoutput";
+            this.lblmoreoutput.Size = new System.Drawing.Size(0, 15);
+            this.lblmoreoutput.TabIndex = 12;
             // 
             // AgeCalculator
             // 
@@ -362,7 +362,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(487, 259);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblmoreoutput);
             this.Controls.Add(this.LblCheckboxOutput);
             this.Controls.Add(this.checkedListBox);
             this.Controls.Add(this.btnReset);
@@ -413,6 +413,6 @@
         private Button btnReset;
         private CheckedListBox checkedListBox;
         private Label LblCheckboxOutput;
-        private Label label4;
+        private Label lblmoreoutput;
     }
 }
