@@ -47,6 +47,7 @@
             this.checkedListBox = new System.Windows.Forms.CheckedListBox();
             this.LblCheckboxOutput = new System.Windows.Forms.Label();
             this.lblmoreoutput = new System.Windows.Forms.Label();
+            this.btnOpenFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -356,12 +357,23 @@
             this.lblmoreoutput.Size = new System.Drawing.Size(0, 15);
             this.lblmoreoutput.TabIndex = 12;
             // 
+            // btnOpenFile
+            // 
+            this.btnOpenFile.Location = new System.Drawing.Point(45, 167);
+            this.btnOpenFile.Name = "btnOpenFile";
+            this.btnOpenFile.Size = new System.Drawing.Size(101, 26);
+            this.btnOpenFile.TabIndex = 13;
+            this.btnOpenFile.Text = "Open File";
+            this.btnOpenFile.UseVisualStyleBackColor = true;
+            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            // 
             // AgeCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(487, 259);
+            this.Controls.Add(this.btnOpenFile);
             this.Controls.Add(this.lblmoreoutput);
             this.Controls.Add(this.LblCheckboxOutput);
             this.Controls.Add(this.checkedListBox);
@@ -414,5 +426,6 @@
         private CheckedListBox checkedListBox;
         private Label LblCheckboxOutput;
         private Label lblmoreoutput;
+        private Button btnOpenFile;
     }
 }

@@ -1,8 +1,5 @@
-using System.Security.AccessControl;
-using System.Security.Cryptography.X509Certificates;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using ComboBox = System.Windows.Forms.ComboBox;
+using System.Text.Json;
+using System.Xml.Linq;
 
 namespace AgeCalculator
 {
@@ -17,8 +14,11 @@ namespace AgeCalculator
         public int currentyear = 0;
         public int birthyear = 0;
         public int totaldaysPerMonth = 0;
+        string fileName;
         int count = 0;
         int count2 = 0;
+        List<JsonItems> ResultDateList = new List<JsonItems>();
+        List<JsonItems> DateList = new List<JsonItems>();
 
         public AgeCalculator()
         {
@@ -32,15 +32,15 @@ namespace AgeCalculator
         }
         public static bool LeapYear(int BirthYear)
         {
-            if(BirthYear % 4 == 0)
+            if (BirthYear % 4 == 0)
             {
-                if(BirthYear % 100 != 0)
+                if (BirthYear % 100 != 0)
                 {
                     return true;
                 }
                 else
                 {
-                    if(BirthYear % 400 == 0)
+                    if (BirthYear % 400 == 0)
                     {
                         return true;
                     }
@@ -72,12 +72,12 @@ namespace AgeCalculator
             {
                 comboBoxBirthDay.Items.Add(i.ToString());
             }
-            comboBoxBirthDay.SelectedIndex = BirthDateCalender.Value.Day-1;
+            comboBoxBirthDay.SelectedIndex = BirthDateCalender.Value.Day - 1;
         }
 
         public void AddCurrentDaysItem()
         {
-	    comboBoxCurrentDay.Items.Clear();
+            comboBoxCurrentDay.Items.Clear();
             if (LeapYear(ToDateCalender.Value.Year))
             {
                 totaldaysPerMonth = NoDayLeapMonth[ToDateCalender.Value.Month - 1];
@@ -112,13 +112,13 @@ namespace AgeCalculator
                 birthyear = int.Parse(textBoxBirthYear.Text);
                 count++;
             }
-            
+
             comboBoxCurrentMonth.SelectedIndex = ToDateCalender.Value.Month - 1;
             textBoxCurrentYear.Text = (ToDateCalender.Value.Year).ToString();
             comboBoxCurrentDay.SelectedIndex = ToDateCalender.Value.Day - 1;
 
             if (count2 == 0)
-            {                
+            {
                 currentmonth = comboBoxCurrentMonth.SelectedIndex + 1;
                 currentyear = int.Parse(textBoxCurrentYear.Text);
                 currentday = int.Parse(comboBoxCurrentDay.SelectedItem.ToString());
@@ -169,8 +169,28 @@ namespace AgeCalculator
             int CurrentMonth = ToDateCalender.Value.Month;
             int BirthDateDay = BirthDateCalender.Value.Day;
             int CurrentDay = ToDateCalender.Value.Day;
-
-            if (int.Parse(textBoxBirthYear.Text) <= 1753 || int.Parse(textBoxCurrentYear.Text) <= 1753)
+            if (DateList.Count != 0)
+            {
+                for (int i = 0; i < DateList.Count; i++)
+                {
+                    calculateAgeFromFile(DateList[i].birthDate, DateList[i].toDate);
+                }
+                string filepath = Path.GetDirectoryName(fileName);
+                Stream createStream;
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.Filter = "Json files (*.json)|*.json";
+                saveFileDialog1.FilterIndex = 4;
+                saveFileDialog1.RestoreDirectory = true;
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    if ((createStream = saveFileDialog1.OpenFile()) != null)
+                    {
+                        JsonSerializer.SerializeAsync(createStream, ResultDateList);
+                        createStream.Close();
+                    }
+                }
+            }
+            else if (int.Parse(textBoxBirthYear.Text) <= 1753 || int.Parse(textBoxCurrentYear.Text) <= 1753)
             {
                 Result.Hide();
                 labelError.Hide();
@@ -236,7 +256,7 @@ namespace AgeCalculator
                 int TotalHour = TotalDays * 24;
                 int TotalMinute = TotalHour * 60;
                 int TotalSecond = TotalMinute * 60;
-               for (int i = 0; i < 12; i++)
+                for (int i = 0; i < 12; i++)
                 {
                     if (CalculatedDay == NoDayLeapMonth[ToDateCalender.Value.Month] || CalculatedDay == NoDayRegularMonth[ToDateCalender.Value.Month])
                     {
@@ -250,31 +270,31 @@ namespace AgeCalculator
                     }
                 }
                 string moreOutputResult = "";
-                for (int i = 0; i< checkedListBox.CheckedItems.Count; i++)
+                for (int i = 0; i < checkedListBox.CheckedItems.Count; i++)
                 {
                     if (checkedListBox.CheckedItems[i] == "Months")
                     {
-                        moreOutputResult += "Total "+ TotalMonths + " Months and "+CalculatedDay+ " Days.\n";
+                        moreOutputResult += "And " + TotalMonths + " Months and " + CalculatedDay + " Days.\n";
                     }
                     else if (checkedListBox.CheckedItems[i] == "Weeks")
                     {
-                        moreOutputResult += "Total " + TotalWeeks + " Weeks and " + WeekDays + " Days.\n";
+                        moreOutputResult += "And " + TotalWeeks + " Weeks and " + WeekDays + " Days.\n";
                     }
                     else if (checkedListBox.CheckedItems[i] == "Days")
                     {
-                        moreOutputResult += "Total " + TotalDays + " Days.\n";
+                        moreOutputResult += "And " + TotalDays + " Days.\n";
                     }
                     else if (checkedListBox.CheckedItems[i] == "Hours")
                     {
-                        moreOutputResult += "Total " + TotalHour + " Hours.\n";
+                        moreOutputResult += "And " + TotalHour + " Hours.\n";
                     }
                     else if (checkedListBox.CheckedItems[i] == "Minutes")
                     {
-                        moreOutputResult += "Total " + TotalMinute + " Minutes.\n";
+                        moreOutputResult += "And " + TotalMinute + " Minutes.\n";
                     }
                     else if (checkedListBox.CheckedItems[i] == "Seconds")
                     {
-                        moreOutputResult += "Total " + TotalSecond + " Seconds.\n";
+                        moreOutputResult += "And " + TotalSecond + " Seconds.\n";
                     }
                 }
                 Result.Hide();
@@ -283,13 +303,13 @@ namespace AgeCalculator
                 Result.Text = "Your Age is " + CalculatedYear + " years, " + CalculatedMonth + " months and " + CalculatedDay + " days";
                 Result.Show();
                 LblCheckboxOutput.Text = moreOutputResult;
-                if(moreOutputResult != "")
+                if (moreOutputResult != "")
                 {
                     LblCheckboxOutput.Show();
-                }                
+                }
             }
         }
-        
+
 
 
         private void comboBoxBirthDay_SelectedIndexChanged(object sender, EventArgs e)
@@ -301,7 +321,7 @@ namespace AgeCalculator
                 birthday = int.Parse(comboBoxBirthDay.SelectedItem.ToString());
                 SelectedBirthDayUpgrade(birthyear);
                 BirthDateCalender.Value = new DateTime(birthyear, birthmonth, birthday);
-            }                
+            }
         }
 
         private void comboBoxBirthMonth_SelectedIndexChanged(object sender, EventArgs e)
@@ -313,7 +333,7 @@ namespace AgeCalculator
                 birthday = int.Parse(comboBoxBirthDay.SelectedItem.ToString());
                 SelectedBirthDayUpgrade(birthyear);
                 BirthDateCalender.Value = new DateTime(birthyear, birthmonth, birthday);
-                AddBirthDaysItem();        
+                AddBirthDaysItem();
             }
         }
 
@@ -321,14 +341,14 @@ namespace AgeCalculator
         {
             textBoxBirthYear.Text = (BirthDateCalender.Value.Year).ToString();
             comboBoxBirthMonth.SelectedIndex = BirthDateCalender.Value.Month - 1;
-            comboBoxBirthDay.SelectedIndex = BirthDateCalender.Value.Day - 1;            
+            comboBoxBirthDay.SelectedIndex = BirthDateCalender.Value.Day - 1;
         }
 
         private void ToDate_ValueChanged(object sender, EventArgs e)
         {
             textBoxCurrentYear.Text = (ToDateCalender.Value.Year).ToString();
             comboBoxCurrentMonth.SelectedIndex = ToDateCalender.Value.Month - 1;
-            comboBoxCurrentDay.SelectedIndex = ToDateCalender.Value.Day - 1;            
+            comboBoxCurrentDay.SelectedIndex = ToDateCalender.Value.Day - 1;
         }
 
         private void comboBoxCurrentDay_SelectedIndexChanged(object sender, EventArgs e)
@@ -336,7 +356,7 @@ namespace AgeCalculator
             if (currentday != 0 && currentmonth != 0 && currentyear.ToString() != "0")
             {
                 currentyear = int.Parse(textBoxCurrentYear.Text);
-                currentmonth = comboBoxCurrentMonth.SelectedIndex + 1;                
+                currentmonth = comboBoxCurrentMonth.SelectedIndex + 1;
                 currentday = int.Parse(comboBoxCurrentDay.SelectedItem.ToString());
                 SelectedCurrentDayUpgrade(currentyear);
                 ToDateCalender.Value = new DateTime(currentyear, currentmonth, currentday);
@@ -348,7 +368,7 @@ namespace AgeCalculator
             if (currentday != 0 && currentmonth != 0 && currentyear.ToString() != "0")
             {
                 currentyear = int.Parse(textBoxCurrentYear.Text);
-                currentmonth = comboBoxCurrentMonth.SelectedIndex + 1;                
+                currentmonth = comboBoxCurrentMonth.SelectedIndex + 1;
                 currentday = int.Parse(comboBoxCurrentDay.SelectedItem.ToString());
                 SelectedCurrentDayUpgrade(currentyear);
                 ToDateCalender.Value = new DateTime(currentyear, currentmonth, currentday);
@@ -357,10 +377,10 @@ namespace AgeCalculator
         }
 
         private void textBoxBirthYear_TextChanged(object sender, EventArgs e)
-        {            
+        {
             if (birthday != 0 && birthmonth != 0 && birthyear != 0 && textBoxBirthYear.Text != "")
             {
-                if (int.Parse(textBoxBirthYear.Text) <= 1753 || int.Parse(textBoxBirthYear.Text) >= 9998 || textBoxBirthYear.Text == "")                    
+                if (int.Parse(textBoxBirthYear.Text) <= 1753 || int.Parse(textBoxBirthYear.Text) >= 9998 || textBoxBirthYear.Text == "")
                 {
                     if ((textBoxBirthYear.Text).Length == 4)
                     {
@@ -368,33 +388,33 @@ namespace AgeCalculator
                         labelError.Hide();
                         labelError.Text = ("year must be biger then 1753 and smaller then 9998");
                         labelError.Show();
-                    }                    
+                    }
                 }
                 else
                 {
-                    birthyear = int.Parse(textBoxBirthYear.Text);                    
-                    birthmonth = comboBoxBirthMonth.SelectedIndex + 1;                    
+                    birthyear = int.Parse(textBoxBirthYear.Text);
+                    birthmonth = comboBoxBirthMonth.SelectedIndex + 1;
                     birthday = int.Parse(comboBoxBirthDay.SelectedItem.ToString());
                     SelectedBirthDayUpgrade(birthyear);
-                    BirthDateCalender.Value = new DateTime(birthyear, birthmonth, birthday);                   
-                    AddBirthDaysItem();                    
+                    BirthDateCalender.Value = new DateTime(birthyear, birthmonth, birthday);
+                    AddBirthDaysItem();
                 }
-            }            
+            }
         }
 
         private void textBoxCurrentYear_TextChanged(object sender, EventArgs e)
-        {            
+        {
             if (currentday != 0 && currentmonth != 0 && currentyear.ToString() != "0" && textBoxCurrentYear.Text != "")
             {
                 if (int.Parse(textBoxCurrentYear.Text) <= 1753 || int.Parse(textBoxCurrentYear.Text) >= 9998 || textBoxCurrentYear.Text == "")
                 {
-                    if((textBoxCurrentYear.Text).Length == 4)
+                    if ((textBoxCurrentYear.Text).Length == 4)
                     {
                         Result.Hide();
                         labelError.Hide();
                         labelError.Text = ("year must be biger then 1753 and smaller then 9998");
-                        labelError.Show();                      
-                    }                   
+                        labelError.Show();
+                    }
                 }
                 else
                 {
@@ -404,12 +424,12 @@ namespace AgeCalculator
                     SelectedCurrentDayUpgrade(currentyear);
                     ToDateCalender.Value = new DateTime(currentyear, currentmonth, currentday);
                     AddCurrentDaysItem();
-                }                
+                }
             }
         }
 
         private void textBoxBirthYear_KeyPress(object sender, KeyPressEventArgs e)
-       {
+        {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
@@ -457,6 +477,116 @@ namespace AgeCalculator
             labelError.Hide();
             LblCheckboxOutput.Hide();
             Size = new Size(503, 298);
+        }
+
+        public void calculateAgeFromFile(string Filebirthdate, string Filetodate)
+        {
+            string[] FileBirthDate = Filebirthdate.Split('/');
+            string[] FileToDate = Filetodate.Split('/');
+            int FileBirthDay = int.Parse(FileBirthDate[0]);
+            int FileBirthMOnth = int.Parse(FileBirthDate[1]);
+            int FileBirthYear = int.Parse(FileBirthDate[2]);
+            int FileToDay = int.Parse(FileToDate[0]);
+            int FileToMOnth = int.Parse(FileToDate[1]);
+            int FileToYear = int.Parse(FileToDate[2]);
+
+            if (FileBirthDay > FileToDay)
+            {
+                if (LeapYear(FileBirthYear))
+                {
+                    FileToDay = FileToDay + NoDayLeapMonth[FileToMOnth - 1];
+                    FileToMOnth = FileToMOnth - 1;
+                }
+                else
+                {
+                    FileToDay = FileToDay + NoDayRegularMonth[FileToMOnth - 1];
+                    FileToMOnth = FileToMOnth - 1;
+                }
+            }
+
+            if (FileBirthMOnth > FileToMOnth)
+            {
+                FileToYear = FileToYear - 1;
+                FileToMOnth = FileToMOnth + 12;
+            }
+            int CalculatedDay = (FileToDay - FileBirthDay);
+            int CalculatedMonth = FileToMOnth - FileBirthMOnth;
+            int CalculatedYear = FileToYear - FileBirthYear;
+            int TotalDays = (((CalculatedYear * 12) + CalculatedMonth) * 30) + CalculatedDay;
+            int TotalMonths = ((CalculatedYear * 12) + CalculatedMonth);
+            int TotalWeeks = TotalDays / 7;
+            int WeekDays = TotalDays - TotalWeeks * 7;
+            int TotalHour = TotalDays * 24;
+            int TotalMinute = TotalHour * 60;
+            int TotalSecond = TotalMinute * 60;
+            for (int i = 0; i < 12; i++)
+            {
+                if (CalculatedDay == NoDayLeapMonth[FileToMOnth-1] || CalculatedDay == NoDayRegularMonth[FileToMOnth-1])
+                {
+                    CalculatedDay = 0;
+                    CalculatedMonth += 1;
+                    if (CalculatedMonth == 12)
+                    {
+                        CalculatedMonth = 0;
+                        CalculatedYear += 1;
+                    }
+                }
+            }
+            string moreOutputResult = "";
+            for (int i = 0; i < checkedListBox.CheckedItems.Count; i++)
+            {
+                if (checkedListBox.CheckedItems[i] == "Months")
+                {
+                    moreOutputResult += " And " + TotalMonths + " Months and " + CalculatedDay + " Days.";
+                }
+                else if (checkedListBox.CheckedItems[i] == "Weeks")
+                {
+                    moreOutputResult += " And " + TotalWeeks + " Weeks and " + WeekDays + " Days.";
+                }
+                else if (checkedListBox.CheckedItems[i] == "Days")
+                {
+                    moreOutputResult += " And " + TotalDays + " Days.";
+                }
+                else if (checkedListBox.CheckedItems[i] == "Hours")
+                {
+                    moreOutputResult += " And " + TotalHour + " Hours.";
+                }
+                else if (checkedListBox.CheckedItems[i] == "Minutes")
+                {
+                    moreOutputResult += " And " + TotalMinute + " Minutes.";
+                }
+                else if (checkedListBox.CheckedItems[i] == "Seconds")
+                {
+                    moreOutputResult += " And" + TotalSecond + " Seconds.";
+                }
+            }
+            string result = Result.Text = "Age = " + CalculatedYear + " years, " + CalculatedMonth + " months and " + CalculatedDay + " days";
+            if(moreOutputResult != "")
+            {
+                result = result + moreOutputResult;
+            }
+            string FinalResult = "birthDate = " + Filebirthdate + "\ntoDate = " + Filetodate +"\n"+ result;
+           //ResultDateList.Add(FinalResult);
+            ResultDateList.Add(new JsonItems()
+            {
+                birthDate = Filebirthdate,
+                toDate = Filetodate,
+                Age = result
+            });
+        }
+
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            var FD = new System.Windows.Forms.OpenFileDialog();
+            FD.Filter = "Json files (*.json)|*.json";
+            if (FD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                
+                fileName = FD.FileName;
+                string json = System.IO.File.ReadAllText(fileName);
+                DateList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<JsonItems>>(json);
+            }
+
         }
     }
 }
