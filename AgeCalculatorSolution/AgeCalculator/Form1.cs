@@ -255,7 +255,7 @@ namespace AgeCalculator
                 int WeekDays = TotalDays - TotalWeeks * 7;
                 int TotalHour = TotalDays * 24;
                 int TotalMinute = TotalHour * 60;
-                int TotalSecond = TotalMinute * 60;
+                double TotalSecond = Convert.ToDouble(TotalMinute * 60);
                 for (int i = 0; i < 12; i++)
                 {
                     if (CalculatedDay == NoDayLeapMonth[ToDateCalender.Value.Month] || CalculatedDay == NoDayRegularMonth[ToDateCalender.Value.Month])
@@ -518,7 +518,7 @@ namespace AgeCalculator
             int WeekDays = TotalDays - TotalWeeks * 7;
             int TotalHour = TotalDays * 24;
             int TotalMinute = TotalHour * 60;
-            int TotalSecond = TotalMinute * 60;
+            double TotalSecond = Convert.ToDouble(TotalMinute * 60);
             for (int i = 0; i < 12; i++)
             {
                 if (CalculatedDay == NoDayLeapMonth[FileToMOnth-1] || CalculatedDay == NoDayRegularMonth[FileToMOnth-1])
