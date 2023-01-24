@@ -208,7 +208,7 @@ namespace AgeCalculator
             {
                 Result.Hide();
                 labelError.Hide();
-                labelError.Text = ("You are born today, Happy Birthday To You");
+                labelError.Text = ("0 year, 0 month, 0 day");
                 labelError.Show();
             }
             else if (BirthYear > CurrentYear)
@@ -240,6 +240,14 @@ namespace AgeCalculator
                         CurrentMonth = CurrentMonth - 1;
                     }
                 }
+                int  LeapYearCount = 0;
+                for (int i = BirthYear; i <= CurrentYear; i++)
+                {
+                    if (LeapYear(i))
+                    {
+                        LeapYearCount++;
+                    }                    
+                }
 
                 if (BirthMonth > CurrentMonth)
                 {
@@ -249,7 +257,7 @@ namespace AgeCalculator
                 int CalculatedDay = (CurrentDay - BirthDateDay);
                 int CalculatedMonth = CurrentMonth - BirthMonth;
                 int CalculatedYear = CurrentYear - BirthYear;
-                int TotalDays = (((CalculatedYear * 12) + CalculatedMonth) * 30) + CalculatedDay;
+                int TotalDays = ((CalculatedYear * 365) + CalculatedMonth * 30) + CalculatedDay + LeapYearCount;
                 int TotalMonths = ((CalculatedYear * 12) + CalculatedMonth);
                 int TotalWeeks = TotalDays / 7;
                 int WeekDays = TotalDays - TotalWeeks * 7;
@@ -274,27 +282,27 @@ namespace AgeCalculator
                 {
                     if (checkedListBox.CheckedItems[i] == "Months")
                     {
-                        moreOutputResult += "And " + TotalMonths + " Months and " + CalculatedDay + " Days.\n";
+                        moreOutputResult += "Or, " + TotalMonths + " Months and " + CalculatedDay + " Days.\n";
                     }
                     else if (checkedListBox.CheckedItems[i] == "Weeks")
                     {
-                        moreOutputResult += "And " + TotalWeeks + " Weeks and " + WeekDays + " Days.\n";
+                        moreOutputResult += "Or, " + TotalWeeks + " Weeks and " + WeekDays + " Days.\n";
                     }
                     else if (checkedListBox.CheckedItems[i] == "Days")
                     {
-                        moreOutputResult += "And " + TotalDays + " Days.\n";
+                        moreOutputResult += "Or, " + TotalDays + " Days.\n";
                     }
                     else if (checkedListBox.CheckedItems[i] == "Hours")
                     {
-                        moreOutputResult += "And " + TotalHour + " Hours.\n";
+                        moreOutputResult += "Or, " + TotalHour + " Hours.\n";
                     }
                     else if (checkedListBox.CheckedItems[i] == "Minutes")
                     {
-                        moreOutputResult += "And " + TotalMinute + " Minutes.\n";
+                        moreOutputResult += "Or, " + TotalMinute + " Minutes.\n";
                     }
                     else if (checkedListBox.CheckedItems[i] == "Seconds")
                     {
-                        moreOutputResult += "And " + TotalSecond + " Seconds.\n";
+                        moreOutputResult += "Or, " + TotalSecond + " Seconds.\n";
                     }
                 }
                 Result.Hide();
@@ -587,6 +595,11 @@ namespace AgeCalculator
                 DateList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<JsonItems>>(json);
             }
 
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

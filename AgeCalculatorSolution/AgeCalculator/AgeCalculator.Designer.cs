@@ -48,13 +48,14 @@
             this.LblCheckboxOutput = new System.Windows.Forms.Label();
             this.lblmoreoutput = new System.Windows.Forms.Label();
             this.btnOpenFile = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(165, 0);
+            this.label1.Location = new System.Drawing.Point(157, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(198, 30);
             this.label1.TabIndex = 0;
@@ -63,7 +64,7 @@
             // BirthDateCalender
             // 
             this.BirthDateCalender.CustomFormat = "dd/mm/yyyy";
-            this.BirthDateCalender.Location = new System.Drawing.Point(328, 79);
+            this.BirthDateCalender.Location = new System.Drawing.Point(186, 85);
             this.BirthDateCalender.Name = "BirthDateCalender";
             this.BirthDateCalender.Size = new System.Drawing.Size(18, 23);
             this.BirthDateCalender.TabIndex = 3;
@@ -71,7 +72,7 @@
             // 
             // ToDateCalender
             // 
-            this.ToDateCalender.Location = new System.Drawing.Point(328, 122);
+            this.ToDateCalender.Location = new System.Drawing.Point(186, 144);
             this.ToDateCalender.Name = "ToDateCalender";
             this.ToDateCalender.Size = new System.Drawing.Size(18, 23);
             this.ToDateCalender.TabIndex = 7;
@@ -81,7 +82,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(31, 80);
+            this.label2.Location = new System.Drawing.Point(10, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 21);
             this.label2.TabIndex = 3;
@@ -91,7 +92,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(66, 120);
+            this.label3.Location = new System.Drawing.Point(10, 114);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 21);
             this.label3.TabIndex = 3;
@@ -104,7 +105,7 @@
             this.btnCalculate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCalculate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCalculate.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCalculate.Location = new System.Drawing.Point(256, 167);
+            this.btnCalculate.Location = new System.Drawing.Point(10, 189);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(90, 26);
             this.btnCalculate.TabIndex = 8;
@@ -116,12 +117,12 @@
             // 
             this.Result.AutoSize = true;
             this.Result.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Result.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Result.Location = new System.Drawing.Point(14, 214);
+            this.Result.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Result.Location = new System.Drawing.Point(312, 61);
             this.Result.Margin = new System.Windows.Forms.Padding(0);
             this.Result.Name = "Result";
             this.Result.Padding = new System.Windows.Forms.Padding(5, 10, 5, 10);
-            this.Result.Size = new System.Drawing.Size(326, 41);
+            this.Result.Size = new System.Drawing.Size(229, 33);
             this.Result.TabIndex = 3;
             this.Result.Text = "Your Age is 0 years, 0 months and 0 days";
             this.Result.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -166,7 +167,7 @@
             "29",
             "30",
             "31"});
-            this.comboBoxBirthDay.Location = new System.Drawing.Point(152, 79);
+            this.comboBoxBirthDay.Location = new System.Drawing.Point(10, 85);
             this.comboBoxBirthDay.Name = "comboBoxBirthDay";
             this.comboBoxBirthDay.Size = new System.Drawing.Size(38, 23);
             this.comboBoxBirthDay.TabIndex = 0;
@@ -193,7 +194,7 @@
             "October",
             "November",
             "December"});
-            this.comboBoxBirthMonth.Location = new System.Drawing.Point(191, 79);
+            this.comboBoxBirthMonth.Location = new System.Drawing.Point(49, 85);
             this.comboBoxBirthMonth.Name = "comboBoxBirthMonth";
             this.comboBoxBirthMonth.Size = new System.Drawing.Size(80, 23);
             this.comboBoxBirthMonth.TabIndex = 1;
@@ -203,7 +204,7 @@
             // 
             this.textBoxBirthYear.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxBirthYear.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBoxBirthYear.Location = new System.Drawing.Point(277, 79);
+            this.textBoxBirthYear.Location = new System.Drawing.Point(135, 85);
             this.textBoxBirthYear.MaxLength = 4;
             this.textBoxBirthYear.Name = "textBoxBirthYear";
             this.textBoxBirthYear.Size = new System.Drawing.Size(45, 23);
@@ -252,7 +253,7 @@
             "29",
             "30",
             "31"});
-            this.comboBoxCurrentDay.Location = new System.Drawing.Point(152, 122);
+            this.comboBoxCurrentDay.Location = new System.Drawing.Point(10, 144);
             this.comboBoxCurrentDay.MaxDropDownItems = 5;
             this.comboBoxCurrentDay.Name = "comboBoxCurrentDay";
             this.comboBoxCurrentDay.Size = new System.Drawing.Size(38, 23);
@@ -280,7 +281,7 @@
             "October",
             "November",
             "December"});
-            this.comboBoxCurrentMonth.Location = new System.Drawing.Point(191, 122);
+            this.comboBoxCurrentMonth.Location = new System.Drawing.Point(49, 144);
             this.comboBoxCurrentMonth.Name = "comboBoxCurrentMonth";
             this.comboBoxCurrentMonth.Size = new System.Drawing.Size(80, 23);
             this.comboBoxCurrentMonth.TabIndex = 5;
@@ -290,7 +291,7 @@
             // 
             this.textBoxCurrentYear.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxCurrentYear.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBoxCurrentYear.Location = new System.Drawing.Point(277, 122);
+            this.textBoxCurrentYear.Location = new System.Drawing.Point(135, 144);
             this.textBoxCurrentYear.MaxLength = 4;
             this.textBoxCurrentYear.Name = "textBoxCurrentYear";
             this.textBoxCurrentYear.Size = new System.Drawing.Size(45, 23);
@@ -302,22 +303,22 @@
             // 
             this.labelError.AutoSize = true;
             this.labelError.BackColor = System.Drawing.Color.Firebrick;
-            this.labelError.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelError.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelError.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.labelError.Location = new System.Drawing.Point(14, 214);
+            this.labelError.Location = new System.Drawing.Point(312, 61);
             this.labelError.Margin = new System.Windows.Forms.Padding(0);
             this.labelError.Name = "labelError";
             this.labelError.Padding = new System.Windows.Forms.Padding(5, 10, 5, 10);
-            this.labelError.Size = new System.Drawing.Size(326, 41);
+            this.labelError.Size = new System.Drawing.Size(229, 33);
             this.labelError.TabIndex = 3;
             this.labelError.Text = "Your Age is 0 years, 0 months and 0 days";
             this.labelError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(152, 167);
+            this.btnReset.Location = new System.Drawing.Point(10, 221);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(98, 26);
+            this.btnReset.Size = new System.Drawing.Size(90, 26);
             this.btnReset.TabIndex = 9;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -334,17 +335,17 @@
             "Hours",
             "Minutes",
             "Seconds"});
-            this.checkedListBox.Location = new System.Drawing.Point(366, 79);
+            this.checkedListBox.Location = new System.Drawing.Point(221, 85);
             this.checkedListBox.MultiColumn = true;
             this.checkedListBox.Name = "checkedListBox";
-            this.checkedListBox.Size = new System.Drawing.Size(108, 112);
+            this.checkedListBox.Size = new System.Drawing.Size(80, 112);
             this.checkedListBox.TabIndex = 10;
             // 
             // LblCheckboxOutput
             // 
             this.LblCheckboxOutput.AutoSize = true;
             this.LblCheckboxOutput.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.LblCheckboxOutput.Location = new System.Drawing.Point(14, 266);
+            this.LblCheckboxOutput.Location = new System.Drawing.Point(322, 107);
             this.LblCheckboxOutput.Name = "LblCheckboxOutput";
             this.LblCheckboxOutput.Size = new System.Drawing.Size(0, 15);
             this.LblCheckboxOutput.TabIndex = 11;
@@ -352,27 +353,39 @@
             // lblmoreoutput
             // 
             this.lblmoreoutput.AutoSize = true;
-            this.lblmoreoutput.Location = new System.Drawing.Point(366, 61);
+            this.lblmoreoutput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblmoreoutput.Location = new System.Drawing.Point(221, 67);
             this.lblmoreoutput.Name = "lblmoreoutput";
             this.lblmoreoutput.Size = new System.Drawing.Size(0, 15);
             this.lblmoreoutput.TabIndex = 12;
             // 
             // btnOpenFile
             // 
-            this.btnOpenFile.Location = new System.Drawing.Point(45, 167);
+            this.btnOpenFile.Location = new System.Drawing.Point(115, 190);
             this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(101, 26);
+            this.btnOpenFile.Size = new System.Drawing.Size(89, 26);
             this.btnOpenFile.TabIndex = 13;
             this.btnOpenFile.Text = "Open File";
             this.btnOpenFile.UseVisualStyleBackColor = true;
             this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(463, 223);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.TabIndex = 14;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // AgeCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(487, 259);
+            this.ClientSize = new System.Drawing.Size(546, 256);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnOpenFile);
             this.Controls.Add(this.lblmoreoutput);
             this.Controls.Add(this.LblCheckboxOutput);
@@ -427,5 +440,6 @@
         private Label LblCheckboxOutput;
         private Label lblmoreoutput;
         private Button btnOpenFile;
+        private Button btnExit;
     }
 }
