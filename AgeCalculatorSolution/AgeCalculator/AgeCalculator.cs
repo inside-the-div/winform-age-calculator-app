@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Windows.Forms;
 using System.Xml.Linq;
 
 namespace AgeCalculator
@@ -485,6 +486,12 @@ namespace AgeCalculator
             labelError.Hide();
             LblCheckboxOutput.Hide();
             Size = new Size(503, 298);
+            BirthDateCalender.Value = DateTime.Now;
+            ToDateCalender.Value = DateTime.Now;
+            for (int i = 0; i < checkedListBox.Items.Count; i++)
+            {
+                checkedListBox.SetItemChecked(i, false);
+            }
         }
 
         public void calculateAgeFromFile(string Filebirthdate, string Filetodate)
